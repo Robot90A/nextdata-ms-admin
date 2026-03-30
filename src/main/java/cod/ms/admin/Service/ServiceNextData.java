@@ -12,4 +12,8 @@ public interface ServiceNextData {
 
     public ClienteResponse guardarCliente(ClienteRequest request);
 
+    public ClienteResponse buscarClientePorID(Long id);
+
+    public void eliminarClientePorID(Long id);
+
 }

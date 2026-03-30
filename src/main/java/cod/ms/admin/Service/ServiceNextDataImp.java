@@ -37,4 +37,32 @@ public class ServiceNextDataImp implements ServiceNextData {
         return nextDaataMapper.clienteResponse(cliente);
 
     }
+
+    @Override
+    public ClienteResponse buscarClientePorID(Long id) {
+
+        Cliente clienteid = clienteRepository.findById(id).orElse(null);
+
+        if (clienteid == null) {
+            throw new RuntimeException("Cliente no encontrado");
+        }
+
+        return nextDaataMapper.clienteResponse(clienteid);
+
+    }
+
+    @Override
+    public void eliminarClientePorID(Long id) {
+
+        Cliente clienteID = clienteRepository.findById(id).orElse(null);
+
+        if(clienteID != null){
+
+            clienteRepository.delete(clienteID);
+
+        }else{
+
+            throw new RuntimeException("El Cliente no existe");
+        }
+    }
 }

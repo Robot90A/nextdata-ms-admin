@@ -5,7 +5,6 @@ import cod.ms.admin.Dto.Response.ClienteResponse;
 import cod.ms.admin.Service.ServiceNextData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +15,12 @@ import java.util.List;
 @RequestMapping(value = "/nextdata")
 public class NextDataController {
 
-    @Autowired
     private ServiceNextData serviceNextData;
+
+    public NextDataController(ServiceNextData serviceNextData){
+
+        this.serviceNextData = serviceNextData;
+    }
 
     @Operation(summary = "Listar clientes", description = "Obtiene todos los clientes registrados")
     @GetMapping(value = "/lista")
@@ -35,6 +38,26 @@ public class NextDataController {
         ClienteResponse clienteGuardado = serviceNextData.guardarCliente(request);
 
         return ResponseEntity.ok(clienteGuardado);
+
+    }
+
+    @Operation(summary = "Buscar cliente", description = "Buscar un cliente por su id")
+    @GetMapping(value = "/buscarID/{id}")
+    public ResponseEntity<ClienteResponse> buscarClientePorSuID(@PathVariable Long id){
+
+        ClienteResponse clienteID = serviceNextData.buscarClientePorID(id);
+
+        return ResponseEntity.ok(clienteID);
+
+    }
+
+    @Operation(summary = "Eliminar cliente ", description = "Elimina un cliente por su id")
+    @DeleteMapping(value = "/eliminar/{id}")
+    public ResponseEntity<Void> eliminarClientePorSuID(@PathVariable Long id){
+
+        serviceNextData.eliminarClientePorID(id);
+
+        return ResponseEntity.noContent().build();
 
     }
 }

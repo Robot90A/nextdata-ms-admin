@@ -1,8 +1,5 @@
 package cod.ms.admin.Dto.Request;
 
-import lombok.Data;
-
-@Data
 public class ClienteRequest {
 
     private String cedula;

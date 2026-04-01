@@ -1,27 +1,17 @@
-package cod.ms.admin.Entity;
+package cod.ms.admin.Dto;
 
-import jakarta.persistence.*;
-import lombok.Data;
+public class TipoProductoDTO {
 
-@Table(name = "tipo_producto")
-@Entity
-public class TipoProducto {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tipo")
     private Long idTipo;
 
-    @Column(name = "nombre_tipo")
     private String nombreTipo;
 
-    public TipoProducto(Long idTipo, String nombreTipo){
-
+    public TipoProductoDTO(Long idTipo, String nombreTipo) {
         this.idTipo = idTipo;
         this.nombreTipo = nombreTipo;
     }
 
-    public TipoProducto(){
+    public TipoProductoDTO(){
 
     }
 
@@ -43,7 +33,7 @@ public class TipoProducto {
 
     @Override
     public String toString() {
-        return "TipoProducto{" +
+        return "TipoProductoDTO{" +
                 "idTipo=" + idTipo +
                 ", nombreTipo='" + nombreTipo + '\'' +
                 '}';

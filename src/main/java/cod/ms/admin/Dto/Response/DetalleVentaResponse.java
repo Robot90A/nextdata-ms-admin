@@ -1,26 +1,16 @@
-package cod.ms.admin.Entity;
+package cod.ms.admin.Dto.Response;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "detalle_venta")
-public class DetalleVenta {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_detalle")
+public class DetalleVentaResponse {
+	
     private Long idDetalle;
-
-    @Column(name = "id_venta")
+    
     private Long idVenta;
 
-    @Column(name = "id_producto")
     private Long idProducto;
 
-    @Column(name = "cantidad")
     private int cantidad;
 
-	public DetalleVenta(Long idDetalle, Long idVenta, Long idProducto, int cantidad) {
+	public DetalleVentaResponse(Long idDetalle, Long idVenta, Long idProducto, int cantidad) {
 		super();
 		this.idDetalle = idDetalle;
 		this.idVenta = idVenta;
@@ -28,7 +18,7 @@ public class DetalleVenta {
 		this.cantidad = cantidad;
 	}
 	
-	public DetalleVenta() {
+	public DetalleVentaResponse() {
 		
 	}
 
@@ -66,7 +56,7 @@ public class DetalleVenta {
 
 	@Override
 	public String toString() {
-		return "DetalleVenta [idDetalle=" + idDetalle + ", idVenta=" + idVenta + ", idProducto=" + idProducto
+		return "DetalleVentaResponse [idDetalle=" + idDetalle + ", idVenta=" + idVenta + ", idProducto=" + idProducto
 				+ ", cantidad=" + cantidad + "]";
 	}
 	

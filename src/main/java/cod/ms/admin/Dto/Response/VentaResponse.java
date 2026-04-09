@@ -1,32 +1,23 @@
-package cod.ms.admin.Entity;
+package cod.ms.admin.Dto.Response;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "venta")
-public class Venta {
+public class VentaResponse {
+	
+	private Long idVenta;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_venta")
-    private Long idVenta;
+	private Long idCliente;
 
-    @Column(name = "id_cliente")
-    private Long idCliente;
+	private LocalDate fecha_venta;
 
-    @Column(name = "fecha_venta")
-    private LocalDate fecha_venta;
-
-	public Venta(Long idVenta, Long idCliente, LocalDate fecha_venta) {
+	public VentaResponse(Long idVenta, Long idCliente, LocalDate fecha_venta) {
 		super();
 		this.idVenta = idVenta;
 		this.idCliente = idCliente;
 		this.fecha_venta = fecha_venta;
 	}
 	
-	public Venta(){
-		
+	public VentaResponse() {
 		
 	}
 
@@ -56,7 +47,7 @@ public class Venta {
 
 	@Override
 	public String toString() {
-		return "Venta [idVenta=" + idVenta + ", idCliente=" + idCliente + ", fecha_venta=" + fecha_venta + "]";
+		return "VentaResponse [idVenta=" + idVenta + ", idCliente=" + idCliente + ", fecha_venta=" + fecha_venta + "]";
 	}
-	
+
 }

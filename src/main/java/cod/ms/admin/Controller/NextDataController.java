@@ -17,6 +17,7 @@ import java.util.List;
 
 @Tag(name = "Clientes", description = "Operaciones relacionadas con clientes")
 @RestController
+@CrossOrigin(value = "http://localhost:4200")
 @RequestMapping(value = "/nextdata")
 public class NextDataController {
 
@@ -105,5 +106,12 @@ public class NextDataController {
 		
 	}
 	
-	
+	@GetMapping(value = "/buscarCedula/{cedula}")
+	public ResponseEntity<ClienteResponse> buscarClientePorCedula(@PathVariable String cedula){
+		
+		ClienteResponse clienteCedula = serviceNextData.buscarClientePorCedula(cedula);
+		
+		return new ResponseEntity<>(clienteCedula, HttpStatus.OK);
+	}
+
 }

@@ -122,4 +122,20 @@ public class ServiceNextDataImp implements ServiceNextData {
 		
 		return nextDaataMapper.productoResponse(guardarProducto);
 	}
+    
+	@Transactional(readOnly = true)
+	@Override
+	public ClienteResponse buscarClientePorCedula(String cedula) {
+		
+		Cliente cliente = clienteRepository.findByCedula(cedula).orElse(null);
+		
+		if(cliente == null) {
+			
+			throw new RuntimeException("Cliente no encontrado por cedula");
+		}
+		
+		return nextDaataMapper.clienteResponse(cliente);
+		
+	}
+
 }

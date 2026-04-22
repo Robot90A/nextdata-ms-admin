@@ -16,6 +16,8 @@ public interface ServiceNextData {
 	public ClienteResponse guardarCliente(ClienteRequest request);
 
 	public ClienteResponse buscarClientePorID(Long id);
+	
+	public ClienteResponse buscarClientePorCedula(String cedula);
 
 	public void eliminarClientePorID(Long id);
 

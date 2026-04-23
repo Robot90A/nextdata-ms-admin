@@ -3,6 +3,7 @@ package cod.ms.admin.mapper;
 import cod.ms.admin.Dto.Request.ClienteRequest;
 import cod.ms.admin.Dto.Request.ProductoRequest;
 import cod.ms.admin.Dto.Request.TipoProductoRequest;
+import cod.ms.admin.Dto.Request.VentaRequest;
 import cod.ms.admin.Dto.Response.ClienteResponse;
 import cod.ms.admin.Dto.Response.ProductoResponse;
 import cod.ms.admin.Dto.Response.TipoProductoResponse;
@@ -32,5 +33,7 @@ public interface NextDaataMapper {
     public Producto productoEntity(ProductoRequest request);
     
     public ProductoResponse productoResponse(Producto entity);
+    
+    public Cliente clienteVentaEntity(VentaRequest request);
     
 }

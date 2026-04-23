@@ -3,9 +3,11 @@ package cod.ms.admin.Controller;
 import cod.ms.admin.Dto.Request.ClienteRequest;
 import cod.ms.admin.Dto.Request.ProductoRequest;
 import cod.ms.admin.Dto.Request.TipoProductoRequest;
+import cod.ms.admin.Dto.Request.VentaRequest;
 import cod.ms.admin.Dto.Response.ClienteResponse;
 import cod.ms.admin.Dto.Response.ProductoResponse;
 import cod.ms.admin.Dto.Response.TipoProductoResponse;
+import cod.ms.admin.Dto.Response.VentaResponse;
 import cod.ms.admin.Service.ServiceNextData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -112,6 +114,16 @@ public class NextDataController {
 		ClienteResponse clienteCedula = serviceNextData.buscarClientePorCedula(cedula);
 		
 		return new ResponseEntity<>(clienteCedula, HttpStatus.OK);
+	}
+	
+	@Operation(summary = "Guardar Venta", description = "Guarda la venta del cliente")
+	@PostMapping(value = "/guardarVenta")
+	public ResponseEntity<Void> guardarVenta (@RequestBody VentaRequest request){
+		
+		serviceNextData.guardarVentaResponse(request);
+		
+		return ResponseEntity.noContent().build();
+		
 	}
 
 }

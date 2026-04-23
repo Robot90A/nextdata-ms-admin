@@ -4,26 +4,87 @@ import java.time.LocalDate;
 
 public class VentaRequest {
 	
-	private Long idCliente;
-
-	private LocalDate fecha_venta;
-
-	public VentaRequest(Long idCliente, LocalDate fecha_venta) {
+	private String cedula;
+    private String nombre;
+    private String correo;
+    private String telefono;
+    private int edad;
+    private Long productoId;
+    private int cantidad;
+    private LocalDate fecha_venta;
+    
+	public VentaRequest(String cedula, String nombre, String correo, String telefono, int edad, Long productoId,
+			int cantidad, LocalDate fecha_venta) {
 		super();
-		this.idCliente = idCliente;
+		this.cedula = cedula;
+		this.nombre = nombre;
+		this.correo = correo;
+		this.telefono = telefono;
+		this.edad = edad;
+		this.productoId = productoId;
+		this.cantidad = cantidad;
 		this.fecha_venta = fecha_venta;
 	}
 	
 	public VentaRequest() {
 		
+		
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
+	public String getCedula() {
+		return cedula;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public Long getProductoId() {
+		return productoId;
+	}
+
+	public void setProductoId(Long productoId) {
+		this.productoId = productoId;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	public LocalDate getFecha_venta() {
@@ -36,7 +97,8 @@ public class VentaRequest {
 
 	@Override
 	public String toString() {
-		return "VentaRequest [idCliente=" + idCliente + ", fecha_venta=" + fecha_venta + "]";
+		return "VentaRequest [cedula=" + cedula + ", nombre=" + nombre + ", correo=" + correo + ", telefono=" + telefono
+				+ ", edad=" + edad + ", productoId=" + productoId + ", cantidad=" + cantidad + ", fecha_venta="
+				+ fecha_venta + "]";
 	}
-	
 }

@@ -1,6 +1,7 @@
 package cod.ms.admin.Service;
 
 import cod.ms.admin.Dto.Request.ClienteRequest;
+import cod.ms.admin.Dto.Request.DetalleVentaRequest;
 import cod.ms.admin.Dto.Request.ProductoRequest;
 import cod.ms.admin.Dto.Request.TipoProductoRequest;
 import cod.ms.admin.Dto.Request.VentaRequest;
@@ -175,20 +176,21 @@ public class ServiceNextDataImp implements ServiceNextData {
 
 	    venta = ventaRepository.save(venta);
 
-	    //Validar producto
-	    Optional<Producto> productoOpt = productoRepository.findById(request.getProductoId());
+	    for (DetalleVentaRequest d : request.getDetalles()) {
 
-	    if (!productoOpt.isPresent()) {
-	        throw new RuntimeException("Producto no encontrado");
+	        Optional<Producto> productoOpt = productoRepository.findById(d.getIdProducto());
+
+	        if (!productoOpt.isPresent()) {
+	            throw new RuntimeException("Producto no encontrado");
+	        }
+
+	        DetalleVenta detalle = new DetalleVenta();
+	        detalle.setIdVenta(venta.getIdVenta());
+	        detalle.setIdProducto(d.getIdProducto());
+	        detalle.setCantidad(d.getCantidad());
+
+	        detalleVentaRepository.save(detalle);
 	    }
-
-	    //Crear detalle
-	    DetalleVenta detalle = new DetalleVenta();
-	    detalle.setIdVenta(venta.getIdVenta());
-	    detalle.setIdProducto(request.getProductoId());
-	    detalle.setCantidad(request.getCantidad());
-
-	    detalleVentaRepository.save(detalle);
 		
 	}
 

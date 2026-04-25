@@ -1,6 +1,7 @@
 package cod.ms.admin.Dto.Request;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class VentaRequest {
 	
@@ -8,24 +9,19 @@ public class VentaRequest {
     private String nombre;
     private String correo;
     private String telefono;
-    private int edad;
-    private Long productoId;
-    private int cantidad;
+    private Integer edad;
+    private List<DetalleVentaRequest> detalles;
     private LocalDate fecha_venta;
     
-	public VentaRequest(String cedula, String nombre, String correo, String telefono, int edad, Long productoId,
-			int cantidad, LocalDate fecha_venta) {
-		super();
-		this.cedula = cedula;
-		this.nombre = nombre;
-		this.correo = correo;
-		this.telefono = telefono;
-		this.edad = edad;
-		this.productoId = productoId;
-		this.cantidad = cantidad;
-		this.fecha_venta = fecha_venta;
+
+	public List<DetalleVentaRequest> getDetalles() {
+		return detalles;
 	}
-	
+
+	public void setDetalles(List<DetalleVentaRequest> detalles) {
+		this.detalles = detalles;
+	}
+
 	public VentaRequest() {
 		
 		
@@ -63,7 +59,7 @@ public class VentaRequest {
 		this.telefono = telefono;
 	}
 
-	public int getEdad() {
+	public Integer getEdad() {
 		return edad;
 	}
 
@@ -71,21 +67,6 @@ public class VentaRequest {
 		this.edad = edad;
 	}
 
-	public Long getProductoId() {
-		return productoId;
-	}
-
-	public void setProductoId(Long productoId) {
-		this.productoId = productoId;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
 
 	public LocalDate getFecha_venta() {
 		return fecha_venta;
@@ -98,7 +79,7 @@ public class VentaRequest {
 	@Override
 	public String toString() {
 		return "VentaRequest [cedula=" + cedula + ", nombre=" + nombre + ", correo=" + correo + ", telefono=" + telefono
-				+ ", edad=" + edad + ", productoId=" + productoId + ", cantidad=" + cantidad + ", fecha_venta="
-				+ fecha_venta + "]";
+				+ ", edad=" + edad + ", detalles=" + detalles + ", fecha_venta=" + fecha_venta + "]";
 	}
+
 }
